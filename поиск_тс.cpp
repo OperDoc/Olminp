@@ -11,7 +11,7 @@ void dfs(int v, int p = -1, int cur = 0)/*O(E)*/{
             if (f[i] >= h[v]) P.push_back(v);
             ch++;
         }
-        else if(p != -1) f[v] = min(f[v], h[i]);
+        else if(p != i) f[v] = min(f[v], h[i]);
     }
     if(p == -1 && ch > 1)P.push_back(v);
 }
