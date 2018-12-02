@@ -40,6 +40,17 @@ void ero(int n, vector<bool> &ans){
             for (int j = i * i; j <= n; j += i)
                 ans[j] = false;
 }
+void f_ero(int n, vector<int> & ans){
+    vector<int> lp(n, 0);
+    for (int i=2; i<=n; ++i) {
+        if (lp[i] == 0) {
+            lp[i] = i;
+            ans.push_back (i);
+        }
+        for (int j=0; j< ans.size() && ans[j]<=lp[i] && i*ans[j]<=n; ++j)
+            lp[i * ans[j]] = ans[j];
+    }
+}
 void divs(int n, vector<int> &ans){
     for(int i = 1; i * i <= n; i++){
         if(n % i == 0) ans.push_back(i);
