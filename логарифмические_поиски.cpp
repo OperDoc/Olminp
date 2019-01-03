@@ -3,8 +3,8 @@ int ter(int a, int b)/*O(log(n))*/{
     for(int i = 0; i < 100; i++){
         m1 = (2*a + b)/3;
         m2 = (a + 2*b)/3;
-        if(f(m1)>(m2)) a = m1;
-        else b = m2;
+        if(f(m1)>f(m2)) a = m1;
+        else            b = m2;
     }
     return min(m1, m2);
 }
