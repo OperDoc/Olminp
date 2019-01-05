@@ -1,5 +1,3 @@
-#include <algorithm>
-using namespace std;
 #define M (r + l) / 2
 #define SIZE 500010
 struct Nd{
