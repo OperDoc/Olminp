@@ -47,12 +47,6 @@ int buildhld(int v, int l, int r, int i) {
     t[i][v] = max(buildhld(p_l, l, m, i), buildhld(p_r, m, r, i));
     return t[i][v];
 }
-
-
-
-
-
-
 int maxhld(int v, int l, int r, int askl, int askr, int i) {
     if (l >= askr || r <= askl) return -inf;
     if (l >= askl && r <= askr) return t[i][v];
