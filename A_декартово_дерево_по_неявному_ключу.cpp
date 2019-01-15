@@ -3,7 +3,6 @@ int mr(){return (rand() << 15) + rand();}
 struct nd{
     int x, y, sz = 0, v = none;
     nd *l, *r;
-    nd():l(nullptr),r(nullptr){}
     nd(int x):x(x),y(mr()),l(nullptr),r(nullptr),sz(1), v(x){}
 };
 typedef nd* pn;
@@ -13,8 +12,8 @@ int g_v(pn rt){return rt ? rt->v : none;}
 void upd(pn rt){if(rt){rt->sz = g_s(rt->l) + g_s(rt->r) + 1; rt->v = min(rt->x,min(g_v(rt->l), g_v(rt->r)));}}
 void spl(pn rt, pn& l, pn& r, int x){
     if(!rt) return void(l = r = nullptr);
-    if(g_s(rt->l) >= x)  {spl(rt->l, l, rt->l, x); r = rt; upd(r);}
-    else{spl(rt->r, rt->r, r, x - g_s(rt->l) - 1); l = rt; upd(l);}
+    if(g_s(rt->l) < x){spl(rt->r, rt->r, r, x - g_s(rt->l) - 1); l = rt; upd(l);}
+    else                               {spl(rt->l, l, rt->l, x); r = rt; upd(r);}
 }
 void mer(pn& rt, pn l, pn r){
     if(!l || !r) return void(rt = l ? l : r);
