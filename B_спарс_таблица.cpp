@@ -9,6 +9,6 @@ void st(){
             sp[i][j] = min(sp[i - 1][j], sp[i - 1][j + (1<<(i - 1))]);
 }
 int q(int l, int r)/*O(1)*/{
-    int j = log[r - l + 1];
-    return min(D[l][j], D[r - (1<<j) + 1][j]);
+    int i = m_log[r - l + 1];
+    return min(sp[i][l], sp[i][r - (1<<j) + 1]);
 }
