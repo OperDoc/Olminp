@@ -1,15 +1,12 @@
-int n;
-vector<vector<int>> D;
-vector<int> a, log(1);
-void st()/*O(n * log(n))*/{
-    D.assign(n, vector<int>(log2(2*n)));
-    for(int i = 1; i < n + 1; i++)
-        log.push_back((int)log2(i));
+int sp[30][500010], arr[500010], m_log[500010], n;
+void st(){
+    for(int i = 0; i < 30; i++)
+        m_log[i] = log2(i);
     for(int i = 0; i < n; i++)
-        D[i][0] = a[i];
+        sp[0][i] = arr[i];
     for(int i = 1; (1<<i) < n; i++)
-        for(int j = 0; (j + (1<<i) - 1) < n; j++)
-            D[j][i] = min(D[j][i - 1], D[j + (1<<(i - 1))][i]);
+        for(int j = 0; j + (1<<i) - 1 < n; j++)
+            sp[i][j] = min(sp[i - 1][j], sp[i - 1][j + (1<<(i - 1))]);
 }
 int q(int l, int r)/*O(1)*/{
     int j = log[r - l + 1];
