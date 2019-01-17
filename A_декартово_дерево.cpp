@@ -16,9 +16,8 @@ void spl(pn rt, pn& l, pn& r, int x){
 }
 void mer(pn& rt, pn l, pn r){
     if(!l || !r) return void(rt = l ? l : r);
-    if(l->y < r->y) {mer(l->r, l->r, r); rt = l;}
-    else            {mer(r->l, l, r->l); rt = r;}
-    upd(rt);
+    if(l->y < r->y) {mer(l->r, l->r, r); rt = l;upd(rt);}
+    else            {mer(r->l, l, r->l); rt = r;upd(rt);}
 }
 void era(pn& rt, int x){
     spl(rt, x1, x3, x + 1); spl(x1, x1, x2, x);
