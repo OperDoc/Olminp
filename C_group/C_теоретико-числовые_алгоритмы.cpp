@@ -24,14 +24,14 @@ bool isp(int n){
     while (n % d != 0 && d * d <= n) ++d;
     return d * d > n;
 }
-void factor(int n, vector<int> &ans){
-    for(int i = 2; i * i <= n; i++){
-        while (n % i == 0){
-            ans.push_back(i);
+void factor(int n, map<int, int> ans) {
+    for(int i = 2; i * i < n; i++){
+        while(n % i == 0){
+            ans[i]++;
             n /= i;
         }
     }
-    if (n > 1)ans.push_back(n);
+    if(n != 1) ans[n]++;
 }
 void ero(int n, vector<bool> &ans){
     ans.assign(n + 1, true);
