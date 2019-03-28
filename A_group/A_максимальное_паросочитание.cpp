@@ -3,7 +3,6 @@ vector< vector<int> > PLg;
 vector<int> Pairs;
 vector<bool> u;
 bool try_k(int v)/*O(E)*/{
-    if(u[v]) return false;
     for(auto i:PLg[v])
         if(mt[i] == -1 || (!u[mt[i]] && try_k(mt[i]))) return 1 + mt[i] = v;
     return false;
